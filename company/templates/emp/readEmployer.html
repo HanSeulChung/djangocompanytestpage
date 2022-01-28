@@ -21,6 +21,7 @@
                     <th>Employer age</th>
                     <th>Employer's DepID</th>
                     <th>Join Date</th>
+                    <th>상세/수정/삭제</th>
                 </tr>
 
 			{% for e in employer_list %}
@@ -31,11 +32,11 @@
                     <td>{{ e.Employer_age }}</td>
                     <td>{{ e.Department_ID }}</td>
                     <td>{{ e.Date_of_Join    }}</td>
+                    <td><a href="{% url 'company:empDet' e.Employer_ID %}">상세</a>
+				        <a href="{% url 'company:empMod' e.Employer_ID %}">수정</a>
+				        <a href="{% url 'company:empDel'  e.Employer_ID %}">삭제</a></td>
                 </tr>
 
-				<a href="{% url 'company:empDet' e.Employer_ID %}">상세</a>
-				<a href="{% url 'company:empMod' e.Employer_ID %}">수정</a>
-				<a href="{% url 'company:empDel'  e.Employer_ID %}">삭제</a>
 
 			{% endfor %}
             </table>

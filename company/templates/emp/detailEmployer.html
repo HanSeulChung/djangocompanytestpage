@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+
+<html lang="ko">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>DetailEmployer</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	</head>
+{% include 'emp/emp.navbar.html' %}
+	<body>
+    <center>
+		<h3>Detail Employer</h3>
+
+		{% if employer_info %}
+			ID : {{employer_info.Employer_ID}}</br>
+			NAME : {{employer_info.Employer_NAME}}</br>
+			GENDER: {{employer_info.Employer_GENDER}}</br>
+			age : {{employer_info.Employer_age}}</br>
+			depID : {{employer_info.Department_ID}}</br>
+            DATE : {{ employer_info.Date_of_Join }}</br>
+            IMAGE : {{ employer_info.Photo_Image }} </br>
+            upload : {{ employer_info.upload_at}}</br>
+
+		{% else %}
+			<h4> employer: 0 </h4>
+		{% endif %}
+
+		</br>
+
+		<a href="{% url 'company:empMod' employer_info.Employer_ID %}">수정</a>
+		<a href="{% url 'company:empDel' employer_info.Employer_ID %}">삭제</a>
+		<a href="{% url 'company:empAll' %}">사원리스트</a>
+		<a href="{% url 'company:regE' %}">신규사원등록</a>
+
+    </center>
+	</body>
+
+</html>

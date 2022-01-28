@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>AllEmployer</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	</head>
+
+{% include 'emp/emp.navbar.html' %}
+	<body>
+    <center>
+		<h1>Employers List</h1>
+
+		{% if employer_list %}
+            <table style="text-align: center " border="1">
+                <tr>
+                    <th>Employer ID</th>
+                    <th>Employer NAME</th>
+                    <th>Employer GENDER</th>
+                    <th>Employer age</th>
+                    <th>Employer's DepID</th>
+                    <th>Join Date</th>
+                </tr>
+
+			{% for e in employer_list %}
+                <tr>
+                    <td>{{ e.Employer_ID }}</td>
+                    <td>{{ e.Employer_NAME }}</td>
+                    <td>{{ e.Employer_GENDER }}</td>
+                    <td>{{ e.Employer_age }}</td>
+                    <td>{{ e.Department_ID }}</td>
+                    <td>{{ e.Date_of_Join    }}</td>
+                </tr>
+
+				<a href="{% url 'company:empDet' e.Employer_ID %}">상세</a>
+				<a href="{% url 'company:empMod' e.Employer_ID %}">수정</a>
+				<a href="{% url 'company:empDel'  e.Employer_ID %}">삭제</a>
+
+			{% endfor %}
+            </table>
+		{% else %}
+			<p> employer : 0</p>
+		{% endif %}
+
+		</br>
+		<a href="{% url 'company:regE' %}">신규사원등록</a>
+    </center>
+	</body>
+
+</html>

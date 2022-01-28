@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+
+<html lang="ko">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>RegisterEmployer</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	</head>
+{% include 'emp/emp.navbar.html' %}
+	<body>
+    <center>
+		<p>Register Employer</p>
+
+		<form action="{% url 'company:regConE' %}" method="post">
+		{% csrf_token %}
+			ID : <input type="text" name="ID"></br>
+			NAME : <input type="text" name="NAME"></br>
+			GENDER : <input type="text" name="GENDER"></br>
+			age : <input type="text" name="age"></br>
+			DepID : <input type="text" name="depID"></br>
+            DATE : <input type="date"  name="DATE"></br>
+            IMAGE : <input type ="image" name="IMAGE"></br>
+            upload : <input type ="file" name="upload"></br>
+			<input type="submit" value="Register">
+		</form>
+    </center>
+	</body>
+
+</html>

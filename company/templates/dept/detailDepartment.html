@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>DetailDepartment</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	</head>
+{% include 'dept/dept.navbar.html' %}
+	<body>
+    <center>
+		<h3>Detail Department</h3>
+
+		{% if department_info %}
+			ID : {{department_info.Department_ID}}</br>
+			NAME : {{department_info.Department_NAME}}</br>
+		{% else %}
+			<p>student: 0</p>
+		{% endif %}
+
+		</br>
+
+		<a href="{% url 'company:depMod' department_info.Department_ID %}">수정</a>
+		<a href="{% url 'company:depDel' department_info.Department_ID %}">삭제</a>
+		<a href="{% url 'company:depAll' %}">부서리스트</a>
+		<a href="{% url 'company:regD' %}">신규부서등록</a>
+    </center>
+	</body>
+
+</html>

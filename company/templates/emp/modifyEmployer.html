@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>ModifyEmployer</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	</head>
+{% include 'emp/emp.navbar.html' %}
+	<body>
+    <center>
+		<p>Modify Employer</p>
+
+		{% if employer_info %}
+		<form action="{% url 'company:modConE' %}" method="post">
+		{% csrf_token %}
+			ID : {{employer_info.Employer_ID}}</br>
+			<input type="hidden" name="ID" value={{employer_info.Employer_ID}}>
+			NAME : <input type="text" name="NAME" value={{employer_info.Employer_NAME}}></br>
+			GENDER : <input type="text" name="GENDER" value={{employer_info.Employer_GENDER}}></br>
+			age : <input type="text" name="age" value={{employer_info.Employer_age}}></br>
+			depID : <input type="text" name="depID" value={{employer_info.Department_ID}}></br>
+            DATE : <input type="date"  name="DATE" value= {{ employer_info.Date_of_Join }}></br>
+
+
+            IMAGE : <img class="img-fluid rounded" src="{{ employer_info.upload_at.url }}" alt=""></br>
+
+
+
+
+            upload : <input type ="file" name="upload" value = {{ employer_info.upload_at}}></br>
+			<input type="submit" value="Modify">
+		</form>
+		{% else %}
+			<p>student: 0</p>
+		{% endif %}
+    </center>
+	</body>
+
+</html>

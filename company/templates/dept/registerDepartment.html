@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+
+<html lang="ko">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>RegisterDepartment</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	</head>
+{% include 'dept/dept.navbar.html' %}
+	<body>
+    <center>
+		<p>Register Department</p>
+
+		<form action="{% url 'company:regConD' %}" method="post">
+		{% csrf_token %}
+			ID : <input type="text" name="ID"></br>
+			NAME : <input type="text" name="NAME"></br>
+
+			<input type="submit" value="Register">
+		</form>
+    </center>
+	</body>
+
+</html>

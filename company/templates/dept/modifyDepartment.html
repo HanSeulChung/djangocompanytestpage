@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>ModifyDeparment</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	</head>
+{% include 'dept/dept.navbar.html' %}
+	<body>
+    <center>
+		<p>Modify Department</p>
+
+		{% if department_info %}
+		<form action="{% url 'company:modConD' %}" method="post">
+		{% csrf_token %}
+			ID : {{ department_info.Department_ID }}</br>
+			<input type="hidden" name="ID" value={{department_info.Department_ID}}>
+			NAME : <input type="text" name="NAME" value={{department_info.Department_NAME}}></br>
+
+			<input type="submit" value="Modify"> <input type="reset" value="Back">
+		</form>
+		{% else %}
+			<p>department: 0</p>
+		{% endif %}
+    </center>
+	</body>
+
+</html>

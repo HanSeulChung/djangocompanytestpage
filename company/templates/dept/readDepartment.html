@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>AllDepartment</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	</head>
+
+{% include 'dept/dept.navbar.html' %}
+	<body>
+    <center>
+		<h1>Departments List</h1>
+
+		{% if department_list %}
+        <ol>
+
+            <table style="text-align: center " border = "1">
+                <tr>
+                    <th>Department ID</th>
+                    <th>Department Name</th>
+                </tr>
+
+			    {% for d in department_list %}
+                <tr>
+				    <td>{{ d.Department_ID }}</td>
+                    <td>{{ d.Department_NAME }}</td>
+                </tr>
+
+                    <li>
+                        <a href="{% url 'company:depDet'  d.Department_ID %}">상세</a>
+                        <a href="{% url 'company:depMod'  d.Department_ID %}">수정</a>
+                        <a href="{% url 'company:depDel'  d.Department_ID %}">삭제</a>
+                    </li>
+
+
+            {% endfor %}
+            </table>
+        </ol>
+		{% else %}
+            <p>department: 0</p>
+		{% endif %}
+
+		</br>
+		<a href="{% url 'company:regD' %}">신규부서등록</a>
+    </center>
+	</body>
+
+</html>

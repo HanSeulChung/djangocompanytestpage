@@ -70,15 +70,16 @@ def regConEmployer(request):
     NAME = request.POST['NAME']
     GENDER = request.POST['GENDER']
     age = request.POST['age']
-    depID = str(request.POST['depID'])
+    depID = Department.objects.get(Department_ID =request.POST['ID'])
     DATE = request.POST['DATE']
-    IMAGE = request.GET['IMAGE']
-    upload = request.POST['upload']
+    IMAGE = request.FILES.get('IMAGE')
+    # upload = request.POST['upload']
 
     qs = Employer(Employer_ID=ID, Department_ID= depID,
                   Employer_NAME=NAME,
                   Employer_GENDER=GENDER, Employer_age=age,
-                  Date_of_Join=DATE, Photo_Image=IMAGE, upload_at=upload)
+                  Date_of_Join=DATE, Photo_Image=IMAGE)
+                  # , upload_at=upload)
     qs.save()
 
     return HttpResponseRedirect(reverse('company:empAll'))
@@ -103,10 +104,10 @@ def modConEmployer(request):
     NAME = request.POST['NAME']
     GENDER = request.POST['GENDER']
     age = request.POST['age']
-    depID = str(request.POST['depID'])
+    depID = Department.objects.get(Department_ID=request.POST['ID'])
     DATE = request.POST['DATE']
-    IMAGE = request.GET['IMAGE']
-    upload = request.POST['upload']
+    IMAGE = request.FILES.get('IMAGE')
+    # upload = request.POST['upload']
 
     e_qs = Employer.objects.get(Employer_ID=ID)
 
@@ -117,7 +118,7 @@ def modConEmployer(request):
     e_qs.Department= depID
     e_qs.Date_of_Join = DATE
     e_qs.Photo_Image = IMAGE
-    e_qs.upload_at = upload
+    # e_qs.upload_at = upload
 
     e_qs.save()
 

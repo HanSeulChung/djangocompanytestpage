@@ -10,7 +10,7 @@
 {% include 'emp/emp.navbar.html' %}
 	<body>
     <center>
-		<p>Register Employer</p>
+		<h3>Register Employer</h3>
 
 		<form action="{% url 'company:regConE' %}" method="post">
 		{% csrf_token %}
@@ -20,8 +20,10 @@
 			age : <input type="text" name="age"></br>
 			DepID : <input type="text" name="depID"></br>
             DATE : <input type="date"  name="DATE"></br>
-            IMAGE : <input type ="image" name="IMAGE"></br>
-            upload : <input type ="file" name="upload"></br>
+
+            IMAGE : <input type ="file" name="Image"> </br>
+
+
 			<input type="submit" value="Register">
 		</form>
     </center>

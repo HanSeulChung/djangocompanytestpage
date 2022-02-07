@@ -9,7 +9,7 @@
 {% include 'emp/emp.navbar.html' %}
 	<body>
     <center>
-		<p>Modify Employer</p>
+		<h3>Modify Employer</h3>
 
 		{% if employer_info %}
 		<form action="{% url 'company:modConE' %}" method="post">
@@ -23,12 +23,9 @@
             DATE : <input type="date"  name="DATE" value= {{ employer_info.Date_of_Join }}></br>
 
 
-            IMAGE : <img class="img-fluid rounded" src="{{ employer_info.upload_at.url }}" alt=""></br>
+            IMAGE : <input type ="file" name="Image" value = {{ employer_info.Photo_Image }}> </br>
 
 
-
-
-            upload : <input type ="file" name="upload" value = {{ employer_info.upload_at}}></br>
 			<input type="submit" value="Modify">
 		</form>
 		{% else %}
